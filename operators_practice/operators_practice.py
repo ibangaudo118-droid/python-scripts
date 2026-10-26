@@ -1,6 +1,6 @@
 """
 Script: operators_practice
-What it does:
+What it does: Demonstrate Arithemetic, Logical, Comparison and Assignment operators using two variables.
 How to run: python operators_practice.py
 Author: David Udoh
 Date: 2026-10-26
