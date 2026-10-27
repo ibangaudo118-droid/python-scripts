@@ -7,7 +7,7 @@ Date: 2026-10-27
 """
 
 full_name = input("Enter your full name: ")
-age = int(input("Enter your age: "))
+age = input("Enter your age: ")
 university = input("Enter your university: ")
 course_of_study = input("Enter your course of Study: ")
 fav_programming_lang = input("Enter your favourite programming language: ")
