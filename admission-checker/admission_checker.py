@@ -28,7 +28,7 @@ elif score < 180:
 elif credit < 5:
   print("NOT ELIGIBLE FOR ADMISSION. (You must have at least 5 O-Level credits)")
 
-elif check == "no":
+elif check != "yes":
   print("NOT ELIGIBLE FOR ADMISSION. (You must have both credits in English and Mathematics)")
 
 else:
