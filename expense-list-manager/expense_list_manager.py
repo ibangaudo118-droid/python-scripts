@@ -19,7 +19,7 @@ while True:
   choice = input("Enter your choice: ")
 
   if choice == "1":
-    amount = int(input("Enter Expense: "))
+    amount = input("Enter Expense: ")
     expense.append(amount)
     print("Expense Added Successfully")
 
