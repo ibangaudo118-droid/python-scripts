@@ -29,7 +29,8 @@ while True:
       print("Nothing to remove")
       
     else:
-      index = input("Enter the index to remove expense: ")
+      index = int(input("Enter the index to remove expense: "))
+      
       if index >= 0 and index < len(expense):
         expense.pop(index)
         print("Expense Removed Successfully")
