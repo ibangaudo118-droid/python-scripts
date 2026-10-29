@@ -9,5 +9,5 @@ numbers = [2, 4, 6, 8, 10]
 
 doubled = [number * 2 for number in numbers]
 
-print(f'Orginal numbers: {umbers}')
+print(f'Original numbers: {numbers}')
 print(f'Doubled numbers: {doubled}')
