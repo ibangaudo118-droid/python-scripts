@@ -5,7 +5,7 @@ This script demonstrates the properties of Python sets (removing duplicates and 
 
 ## How to run it
 In Termux, run:
-python [YOUR_FILE_NAME].py
+python tuples_and_sets.py
 
 ## What I learned
 - I learned that Python sets automatically remove duplicate values. When I put "python" in the set twice, it only printed once.
