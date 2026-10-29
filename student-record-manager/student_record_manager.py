@@ -1,4 +1,10 @@
-
+"""
+Script: student_record_manager.py
+What it does: Demonstrates how to create and manipulate a Python dictionary, including updating existing values, adding new key-value pairs, and removing keys with input validation.
+How to run: python [YOUR_FILE_NAME].py
+Author: David Udoh
+Date: 2026-10-29
+"""
 student = {
   'name': 'David Udoh',
   "age": 20,
