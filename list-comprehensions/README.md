@@ -13,8 +13,7 @@ python list_comprehensions.py
 - I learned that I can do the work of a `for` loop and an `.append()` in a single line of code.
 
 ## What broke and how I fixed it
-Nothing broke during the final run. The code executed successfully.
+I had to make a correction to the file because of spelling errors in my variable names and docstring. I fixed the typos, ensured the variable names matched exactly, and re-ran the script to confirm it executed successfully.
 
 ## Status
 Complete
-
