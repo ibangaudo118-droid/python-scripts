@@ -5,7 +5,7 @@ This script demonstrates how to create and manipulate a Python dictionary. It st
 
 ## How to run it
 In Termux, run:
-python [YOUR_FILE_NAME].py
+python student_recorder_manager.py
 
 ## What I learned
 - I learned that dictionaries store data in key-value pairs, like `{"name": "David"}`.
