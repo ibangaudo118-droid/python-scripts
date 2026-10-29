@@ -51,3 +51,5 @@ while True:
 
   else:
     print("Invalid Choice")
+
+  print(student)

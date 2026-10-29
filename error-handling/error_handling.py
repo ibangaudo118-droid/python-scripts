@@ -9,8 +9,7 @@ Date: 2026-10-29
 while True:
   try:
     age = int(input("Enter your age: "))
-    print(age)
-    exit()
+    break
 
   except ValueError:
     print("Invalid input")
