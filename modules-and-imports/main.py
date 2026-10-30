@@ -46,7 +46,7 @@ while True:
           print(f'Square root of number: {sqrt_number}')
           break
         else:
-          print("Please enter a positive number")
+          print("Please enter a non-negative number")
           print("")
 
     elif choose == 4:
