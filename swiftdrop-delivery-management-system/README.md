@@ -1,4 +1,4 @@
-	xx# SwiftDrop 📦
+# SwiftDrop 📦
 
 ### Parcel Delivery and Tracking Management System
 
@@ -125,17 +125,127 @@ The management class coordinates these objects and their relationships within th
 
 SwiftDrop follows a controlled parcel delivery lifecycle:
 
-```text
-             PENDING
-                |
-                v
-            PICKED UP
-                |
-                v
-            IN TRANSIT
-                |
-                v
-      AWAITING CONFIRMATION
-                |
-                v
-            DELIVERED
+    PENDING
+       |
+       v
+    PICKED UP
+       |
+       v
+    IN TRANSIT
+       |
+       v
+    AWAITING CONFIRMATION
+       |
+       v
+    DELIVERED
+
+**Delivery Rules**
+
+- A parcel must begin in the "Pending" state.
+- Delivery stages must follow the defined sequence.
+- A parcel cannot skip required stages.
+- Recipient confirmation is required before the parcel can be marked as "Delivered".
+- Successful status changes are recorded in the parcel's tracking history.
+
+These rules help maintain consistency throughout the delivery process.
+
+## 6. Delivery Pricing
+
+SwiftDrop supports two delivery service types.
+
+**Standard Delivery**
+
+The standard delivery fee is calculated using:
+
+    fee = (weight * 50) + (delivery_distance * 20)
+
+**Express Delivery**
+
+The express delivery fee is calculated using:
+
+    fee = (weight * 80) + (delivery_distance * 35)
+
+Both services calculate delivery fees using parcel weight and delivery distance but apply different pricing rates.
+
+## 7. Technology Stack
+
+| Technology | Purpose |
+| :--- | :--- |
+| Python 3 | Primary programming language |
+| `abc` module | Abstract base classes and abstraction |
+| Object-Oriented Programming | Application architecture and class relationships |
+| Git | Version control |
+| GitHub | Source code hosting |
+
+## 8. Project Structure
+
+    swiftdrop-delivery-management-system/
+    │
+    ├── swiftdrop_delivery_management_systems.py
+    │
+    └── README.md
+
+## 9. Getting Started
+
+Follow these instructions to run SwiftDrop locally.
+
+**Prerequisites**
+
+- Python 3.10 or later
+- Git
+
+**Step 1: Clone the Repository**
+
+    git clone https://github.com/ibangaudo118-droid/python-scripts.git
+
+**Step 2: Navigate to the Project Directory**
+
+    cd python-scripts/swiftdrop-delivery-management-system
+
+**Step 3: Run the Application**
+
+    python swiftdrop_delivery_management_systems.py
+
+## 10. Engineering Concepts
+
+Building SwiftDrop provided practical experience with:
+
+- Translating business requirements into software components.
+- Designing classes around real-world entities.
+- Applying inheritance and method overriding.
+- Understanding object references and object relationships.
+- Implementing composition and aggregation.
+- Using abstract base classes.
+- Applying polymorphism to support different delivery services.
+- Validating data using exceptions.
+- Managing state transitions and tracking history.
+- Coordinating multiple objects through a management class.
+
+## 11. Future Improvements
+
+Potential extensions to the project include:
+
+- PostgreSQL integration for persistent data storage.
+- REST API development using FastAPI.
+- Automated testing with pytest.
+- Customer and delivery agent authentication.
+- Docker containerisation.
+- Application deployment.
+
+These represent possible future development directions rather than currently implemented features.
+
+## 12. Author
+
+**David**
+
+Aspiring Backend Engineer | Python Developer
+
+Focused on building reliable software systems, strengthening engineering fundamentals, and solving practical business problems through technology.
+
+---
+
+**Project:** SwiftDrop  
+**Language:** Python  
+**Category:** Object-Oriented Programming / Software Engineering
+
+SwiftDrop is a personal software engineering project developed as part of my journey in Python and backend engineering.
