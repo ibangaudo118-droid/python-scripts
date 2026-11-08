@@ -2,39 +2,80 @@ SwiftDrop 📦
 
 Parcel Delivery and Tracking Management System
 
-SwiftDrop is a Python-based parcel delivery management system designed to model the core operations of a delivery company. It provides functionality for managing customers, delivery agents, parcel assignments, delivery pricing, and parcel tracking.
+A Python-based parcel delivery management application built to model the morning core operations of a delivery company through Object-Oriented Programming (OOP).
 
-The project was developed to apply Object-Oriented Programming (OOP) principles to a practical business use case, with an emphasis on clean class design, object relationships, validation, and controlled state transitions.
+SwiftDrop demonstrates class design, inheritance, abstraction, polymorphism, composition, object relationships, data validation, and controlled delivery status transitions.
 
 ---
 
-🎯 Project Objectives
+Table of Contents
 
-- Manage customer and delivery agent records.
-- Create and manage parcel delivery orders.
-- Calculate delivery fees based on service type.
-- Assign delivery agents to parcels.
-- Track parcel delivery progress.
-- Maintain a history of parcel status changes.
-- Require recipient confirmation before completing a delivery.
+1. "Overview" (#overview)
+2. "Features" (#features)
+3. "System Architecture" (#system-architecture)
+4. "Object-Oriented Design" (#object-oriented-design)
+5. "Delivery Workflow" (#delivery-workflow)
+6. "Delivery Pricing" (#delivery-pricing)
+7. "Technology Stack" (#technology-stack)
+8. "Project Structure" (#project-structure)
+9. "Getting Started" (#getting-started)
+10. "Engineering Concepts" (#engineering-concepts)
+11. "Future Improvements" (#future-improvements)
+12. "Author" (#author)
 
-⚙️ Core Features
+---
+
+1. Overview
+
+SwiftDrop is a parcel delivery management application designed around the operational requirements of a delivery company.
+
+The system models how customers register, delivery agents are managed, parcels are created, delivery services calculate fees, and parcels progress through different delivery stages.
+
+The project focuses on translating a real-world business problem into a structured software application using Python's Object-Oriented Programming capabilities.
+
+Rather than organizing the application around unrelated functions, SwiftDrop uses interacting classes with defined responsibilities and relationships.
+
+2. Features
 
 Feature| Description
 Customer Management| Register and manage customer information.
-Agent Management| Maintain delivery agent records and availability.
-Parcel Management| Represent parcels with tracking numbers, descriptions, weight, and delivery distance.
+Delivery Agent Management| Maintain delivery agent records and availability.
+Parcel Management| Create and manage parcel delivery records.
 Delivery Pricing| Calculate fees for Standard and Express delivery services.
 Agent Assignment| Associate delivery agents with parcel deliveries.
-Status Tracking| Track parcel progress through defined delivery stages.
+Status Management| Control parcel progression through defined delivery stages.
 Tracking History| Maintain a chronological record of parcel status changes.
-Recipient Confirmation| Require confirmation before marking a parcel as delivered.
+Recipient Confirmation| Require recipient confirmation before completing a delivery.
+Input Validation| Reject invalid parcel information and unsupported operations.
 
-🏗️ Object-Oriented Design
+3. System Architecture
 
-SwiftDrop uses several OOP principles to structure its functionality.
+SwiftDrop is organized around the following core classes:
 
-1. Inheritance
+Class| Responsibility
+"Person"| Provides shared attributes and behaviour for people in the system.
+"Customer"| Represents a customer requesting parcel delivery.
+"DeliveryAgent"| Represents an agent responsible for delivering parcels.
+"Parcel"| Stores parcel information and manages its delivery status.
+"TrackingHistory"| Records the chronological history of parcel status changes.
+"DeliveryService"| Defines the abstract interface for delivery fee calculation.
+"StandardDelivery"| Implements standard delivery pricing.
+"ExpressDelivery"| Implements express delivery pricing.
+"SwiftDropManagement"| Coordinates customer, agent, and parcel management operations.
+
+Class Relationships
+
+- "Customer" and "DeliveryAgent" inherit from "Person".
+- "StandardDelivery" and "ExpressDelivery" inherit from "DeliveryService".
+- "Parcel" maintains references to its associated customer and delivery agent.
+- "Parcel" owns a "TrackingHistory" instance through composition.
+- "SwiftDropManagement" coordinates the management of customers, agents, and parcels.
+
+4. Object-Oriented Design
+
+The project applies the following OOP principles:
+
+4.1 Inheritance
 
 The "Person" class provides shared attributes and methods inherited by:
 
@@ -46,128 +87,162 @@ The "DeliveryService" abstract base class is inherited by:
 - "StandardDelivery"
 - "ExpressDelivery"
 
-2. Encapsulation
+This reduces unnecessary code duplication and establishes relationships between related classes.
 
-Classes manage their own attributes and behaviour, while validation helps prevent invalid parcel information and delivery transitions.
+4.2 Encapsulation
 
-3. Abstraction
+Classes organize their data and behaviour while applying validation to protect important operations.
 
-The "DeliveryService" abstract class defines a common "calculate_fee()" method that concrete delivery services must implement.
+For example, the "Parcel" class validates parcel weight and delivery distance and controls permitted delivery status transitions.
 
-4. Polymorphism
+4.3 Abstraction
 
-Standard and Express delivery services implement the same "calculate_fee()" interface but use different pricing formulas.
+The "DeliveryService" abstract base class defines a common "calculate_fee()" method.
 
-5. Composition
+Concrete delivery service classes must provide their own implementation of this method.
 
-Each "Parcel" creates and owns its own "TrackingHistory" object.
+4.4 Polymorphism
 
-6. Object Relationships
+Both "StandardDelivery" and "ExpressDelivery" implement the same "calculate_fee()" interface but use different pricing formulas.
 
-Parcels maintain references to their associated customer and delivery agent objects.
+This allows different delivery strategies to share a common interface while maintaining their individual implementations.
 
-🚚 Delivery Workflow
+4.5 Composition
 
-A parcel follows a controlled delivery lifecycle:
+Each "Parcel" creates and owns its own "TrackingHistory" instance.
 
-PENDING
-   |
-   v
-PICKED UP
-   |
-   v
-IN TRANSIT
-   |
-   v
-AWAITING CONFIRMATION
-   |
-   v
-DELIVERED
+This ensures that every parcel maintains an independent record of its delivery progress.
 
-A parcel cannot skip delivery stages or be marked as delivered without recipient confirmation.
+4.6 Object Relationships
 
-💰 Delivery Pricing
+A parcel maintains references to its associated customer and delivery agent objects.
+
+The management class coordinates these objects and their relationships within the application.
+
+5. Delivery Workflow
+
+SwiftDrop follows a controlled parcel delivery lifecycle:
+
+             PENDING
+                |
+                v
+            PICKED UP
+                |
+                v
+            IN TRANSIT
+                |
+                v
+      AWAITING CONFIRMATION
+                |
+                v
+            DELIVERED
+
+Delivery Rules
+
+- A parcel must begin in the "Pending" state.
+- Delivery stages must follow the defined sequence.
+- A parcel cannot skip required stages.
+- Recipient confirmation is required before the parcel can be marked as "Delivered".
+- Successful status changes are recorded in the parcel's tracking history.
+
+These rules help maintain consistency throughout the delivery process.
+
+6. Delivery Pricing
 
 SwiftDrop supports two delivery service types.
 
 Standard Delivery
 
+The standard delivery fee is calculated using:
+
 fee = (weight * 50) + (delivery_distance * 20)
 
 Express Delivery
 
+The express delivery fee is calculated using:
+
 fee = (weight * 80) + (delivery_distance * 35)
 
-The pricing calculation uses the parcel's weight and delivery distance.
+Both services calculate delivery fees using parcel weight and delivery distance but apply different pricing rates.
 
-🛠️ Technologies Used
+7. Technology Stack
 
-- Python 3
-- Object-Oriented Programming
-- Python ABC Module for abstract base classes
+Technology| Purpose
+Python 3| Primary programming language
+"abc" module| Abstract base classes and abstraction
+Object-Oriented Programming| Application architecture and class relationships
+Git| Version control
+GitHub| Source code hosting
 
-📁 Project Structure
+8. Project Structure
 
-SwiftDrop/
+swiftdrop-delivery-management-system/
 │
-├── main.py
+├── swiftdrop_delivery_management_systems.py
+│
 └── README.md
 
-The project structure may evolve as additional functionality is implemented.
+9. Getting Started
 
-▶️ Getting Started
+Follow these instructions to run SwiftDrop locally.
 
 Prerequisites
 
 - Python 3.10 or later
 - Git
 
-Installation
+Step 1: Clone the Repository
 
-Clone the repository:
+git clone https://github.com/ibangaudo118-droid/python-scripts.git
 
-git clone <your-repository-url>
+Step 2: Navigate to the Project Directory
 
-Navigate into the project directory:
+cd python-scripts/swiftdrop-delivery-management-system
 
-cd SwiftDrop
+Step 3: Run the Application
 
-Run the application:
+python swiftdrop_delivery_management_systems.py
 
-python main.py
-
-🧠 What I Learned
+10. Engineering Concepts
 
 Building SwiftDrop provided practical experience with:
 
-- Designing classes and objects around real-world entities.
+- Translating business requirements into software components.
+- Designing classes around real-world entities.
 - Applying inheritance and method overriding.
-- Understanding composition and object references.
-- Implementing abstract base classes.
-- Using polymorphism to support different delivery services.
-- Validating object data with exceptions.
+- Understanding object references and object relationships.
+- Implementing composition and aggregation.
+- Using abstract base classes.
+- Applying polymorphism to support different delivery services.
+- Validating data using exceptions.
 - Managing state transitions and tracking history.
-- Structuring a project around business rules.
+- Coordinating multiple objects through a management class.
 
-🚀 Future Improvements
+11. Future Improvements
 
-Planned improvements include:
+Potential extensions to the project include:
 
-- Persistent storage using PostgreSQL.
-- A REST API using FastAPI.
+- PostgreSQL integration for persistent data storage.
+- REST API development using FastAPI.
+- Automated testing with pytest.
 - Customer and delivery agent authentication.
-- Automated tests using pytest.
-- Improved parcel tracking and management.
-- Docker-based application deployment.
+- Docker containerisation.
+- Application deployment.
 
-👨‍💻 Author
+These represent possible future development directions rather than currently implemented features.
+
+12. Author
 
 David
 
 Aspiring Backend Engineer | Python Developer
 
-Interested in building reliable backend systems and practical software solutions.
+Focused on building reliable software systems, strengthening engineering fundamentals, and solving practical business problems through technology.
 
 ---
 
-SwiftDrop is an educational project developed to strengthen Python programming and software engineering fundamentals.
+Project: SwiftDrop
+Language: Python
+Category: Object-Oriented Programming / Software Engineering
+
+SwiftDrop is a personal software engineering project developed as part of my journey in Python and backend engineering.x
